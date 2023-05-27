@@ -11,5 +11,4 @@ public class MyFrame extends JFrame {
 		this.getContentPane().setBackground(Color.blue);
 
 	}
-
 }
