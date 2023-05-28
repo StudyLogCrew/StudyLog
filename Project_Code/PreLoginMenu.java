@@ -12,11 +12,18 @@ public class PreLoginMenu {
           return true;
         }
         else{
-          User xristoulis = new User(dilosoula); //tha pasaroume ston constructor tou user to registration form
-          //synexizoume me tin ekxorisi tou user stin db
+          boolean kathigitis=false;
           int packkage=0;
           MyFrame paketa = new MyFrame(); //eisagogi apo ton xrhsth gia paketo
-          xristoulis.setkathgoria(packkage);
+          if(kathigitis){
+            Teacher kath = new Teacher(dilosoula); //tha pasaroume ston constructor tou user to registration form
+            Teacher.setkathgoria(packkage);
+          }
+          else{
+            Student math = new Student(dilosoula);
+            Student.setkathgoria(packkage);
+          }
+            //synexizoume me tin ekxorisi tou user stin db
           //40 edo prepei na eisagoume ton xristouli stin sql
         }
       }
@@ -24,8 +31,10 @@ public class PreLoginMenu {
         MyFrame LoginScreen = new MyFrame(); // Edo ypothetoume eisagontai ta stoixeia gia to login
         String pass;
         String name;
-        //40 edo tha ginei to search me ti vash kai theloume na epistrafei to id tou user, diaforetika -1 an den vrethike kati 
-        MenuEpilogis.MenuEpilogiss(int id); //mporoume na valoume parametro user, peite gnomh
+        //40 edo tha ginei to search me ti vash kai theloume na epistrafei to  "teacher" i "student" kai id, an den ginetai prostheto ena bool sto user 
+        int id=0;
+        MenuEpilogis.MenuEpilogissStudent(id); //mporoume na valoume parametro user, peite gnomh
+        MenuEpilogis.MenuEpilogisTeacher(id);
         return false;    //otan o xristis teleiosei apo to login tote i efarmogi tha termatizei
       }
       if(epilogh==3){
