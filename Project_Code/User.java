@@ -8,11 +8,13 @@ public class User {
     int arithmosMathimaton;
     int arithmosProtereotitas;
     int aritmosQuiz;
-    public User(RegistrationForm dilosi){
-        this.onoma=dilosi.onoma;
-        this.epitheto=dilosi.epitheto;
-        this.passward=dilosi.passward;
-        this.ID=dilosi.ID;
+    boolean profProf=false;
+    boolean profStud=false;
+    public User(RegistrationForm dilosoulaTreloula){
+        this.onoma=dilosoulaTreloula.onoma;
+        this.epitheto=dilosoulaTreloula.epitheto;
+        this.passward=dilosoulaTreloula.passward;
+        this.ID=dilosoulaTreloula.ID;
         kathgoria=0;
         arithmosMathimaton=1;
         arithmosProtereotitas=0;
