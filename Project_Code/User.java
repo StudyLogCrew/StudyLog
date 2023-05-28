@@ -20,6 +20,7 @@ public class User {
         arithmosProtereotitas=0;
         aritmosQuiz=1;
     }
+    public User(){}
     public void setkathgoria(int paketo){
         if(paketo==0){}
         else if(paketo==1){}

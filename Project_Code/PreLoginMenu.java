@@ -12,19 +12,25 @@ public class PreLoginMenu {
           return true;
         }
         else{
-          User xristoulis = new User(dilosoula) //tha pasaroume ston constructor tou user to registration form
+          User xristoulis = new User(dilosoula); //tha pasaroume ston constructor tou user to registration form
           //synexizoume me tin ekxorisi tou user stin db
-          int packkage;
+          int packkage=0;
           MyFrame paketa = new MyFrame(); //eisagogi apo ton xrhsth gia paketo
           xristoulis.setkathgoria(packkage);
           //40 edo prepei na eisagoume ton xristouli stin sql
         }
       }
       if(epilogh==2){     //LoginScreen
-          return false;    //otan o xristis teleiosei apo to login tote i efarmogi tha termatizei
+        MyFrame LoginScreen = new MyFrame(); // Edo ypothetoume eisagontai ta stoixeia gia to login
+        String pass;
+        String name;
+        //40 edo tha ginei to search me ti vash kai theloume na epistrafei to id tou user, diaforetika -1 an den vrethike kati 
+        MenuEpilogis.MenuEpilogiss(int id); //mporoume na valoume parametro user, peite gnomh
+        return false;    //otan o xristis teleiosei apo to login tote i efarmogi tha termatizei
       }
       if(epilogh==3){
         return false;     //edo theloume na telionei i efarmogi
       }
+      return false;
     }
 }
