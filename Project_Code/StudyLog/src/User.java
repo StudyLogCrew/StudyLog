@@ -1,30 +1,34 @@
 abstract public class User {
     String onoma;
     String epitheto;
-    String passward;
-    int age;
-    int ID;
-    int kathgoria;
-    int arithmosMathimaton;
-    boolean profile;
-    boolean prof=false;
-    public User(RegistrationForm dilosoulaTreloula, boolean apofash){
-        this.onoma=dilosoulaTreloula.onoma;
-        this.epitheto=dilosoulaTreloula.epitheto;
-        this.passward=dilosoulaTreloula.passward;
-        this.ID=dilosoulaTreloula.ID;
-        this.kathgoria=0;
-        this.arithmosMathimaton=1;
-        this.profile=false;
-        this.prof=apofash;
+    String password;
+    String email;
+    String Username;
+    String packet;
+    int maxLessons;
+    int priority;
+    int quiz;
+    public User(String first_name,String last_name,String password,String email,int id,String packet,String user){
+        this.onoma=first_name;
+        this.epitheto=last_name;
+        this.password=password;        
+        this.packet=packet;
+        
     }
-    public void setkathgoria(int paketo){
-        if(paketo==0){
+    public void PacketXP(){
+        if(this.packet.equals("no_packet")){
+         this.maxLessons=1;
+         this.priority=0;
+         this.quiz=0;
         }
-        else if(paketo==1){
-            kathgoria=1;
-            
+        else if(this.packet.equals("silver")){
+         this.maxLessons=3;
+         this.priority=1;
+         this.quiz=3;   
         }
-        else if(paketo==2){}       // edo prosarmozoume ta paketa
+        else if(this.packet.equals("golden")){
+            this.maxLessons=10000;
+            this.priority=2;
+        }       // edo prosarmozoume ta paketa
     }
 }
