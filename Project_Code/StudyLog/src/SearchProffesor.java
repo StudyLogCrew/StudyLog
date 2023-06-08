@@ -7,8 +7,11 @@ public class SearchProffesor {
             System.out.println("Den vrethike epithimito apotelesma");
             System.out.println("orismena suggestions: ");//tha ginei me my frame
         }
+        else{
+            Signer.sign(id) //+ san parametro tha mpei eite kathigitis, eite to id tou kathigiti. na doume kai ti ginetai me ta frames (proteino load sto telos)
+        }
     }
     public static void suggestions(){
-        
+
     }
 }

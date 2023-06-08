@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Quiz {
-    public static void mennu (ArrayList<String> erotiseis,ArrayList<Integer> apanthseis){
+    public static void mennu (){            //prepei na ginei fortoma apo ssql
+        ArrayList<String> erotiseis = new <String>;
+        ArrayList<Integer> apanthseis = new <String>;
         int sostesApanthseis=0;
         float pososto=0;
         for(int i=0;i<10;i++){

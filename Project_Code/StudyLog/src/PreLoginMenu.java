@@ -24,6 +24,8 @@ public class PreLoginMenu {
             Student.setkathgoria(packkage);
           }
             //synexizoume me tin ekxorisi tou user stin db
+            //teacher = null;
+            //student = null;
           //40 edo prepei na eisagoume ton xristouli stin sql
         }
       }
