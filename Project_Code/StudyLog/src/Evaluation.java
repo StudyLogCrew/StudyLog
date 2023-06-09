@@ -25,7 +25,7 @@ public class Evaluation {
            Class.forName("com.mysql.cj.jdbc.Driver");
            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris","123");
            Statement statement=connection.createStatement();
-           String SQL="INSERT INTO evaluations ( username, eval,votes) VALUES ("+this.username+","+review+","+this.upvotes+") ";
+           String SQL="INSERT INTO evaluations ( username, eval) VALUES ("+this.username+","+review+") ";
            int rowsAffected=statement.executeUpdate(SQL);
            if (rowsAffected>0) System.out.println("Thank you for you're review!");
            else System.out.println("Oops something went wrong with you're review!");
