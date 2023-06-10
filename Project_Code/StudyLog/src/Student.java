@@ -1,6 +1,6 @@
 public class Student extends User{  
-    int aritmosQuiz;       
-    public Student(RegistrationForm dilosoulaTreloula){
-        super(dilosoulaTreloula,false);
-        aritmosQuiz=1;   }
+    int age;       
+    public Student(String first_name,String last_name,String password,String email,String packet,String user,int age){
+        super(first_name,last_name,password,email,packet,user);
+        this.age=age;   }
 }

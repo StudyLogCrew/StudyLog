@@ -8,11 +8,12 @@ abstract public class User {
     int maxLessons;
     int priority;
     int quiz;
-    public User(String first_name,String last_name,String password,String email,int id,String packet,String user){
+    public User(String first_name,String last_name,String password,String email,String packet,String user){
         this.onoma=first_name;
         this.epitheto=last_name;
         this.password=password;        
         this.packet=packet;
+        PacketXP();
         
     }
     public void PacketXP(){
@@ -29,6 +30,6 @@ abstract public class User {
         else if(this.packet.equals("golden")){
             this.maxLessons=10000;
             this.priority=2;
-        }       // edo prosarmozoume ta paketa
+        }       
     }
 }
