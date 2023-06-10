@@ -125,7 +125,7 @@ public class SearchProffesor {
         ResultSet resultSet=statement.executeQuery(SQL);
         ResultSetMetaData rsmd = resultSet.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
-        if(resultSet.equals(0)){
+        if(!resultSet.next()){ 
           return true;
         }
         else 
@@ -162,4 +162,48 @@ public class SearchProffesor {
          e.printStackTrace();
     }
   }
+
+  public static int CheckProfile(String username) {
+    int teacher = 0;
+    int student = 0;
+    try {
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris", "123");
+      Statement statement = connection.createStatement();
+      String SQL;
+      SQL = "SELECT username FROM professor where username=" + username + "";
+      ResultSet resultSet = statement.executeQuery(SQL);
+      if (resultSet.next())
+        teacher = 1;
+      else
+        teacher = 0;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    try {
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris", "123");
+      Statement statement = connection.createStatement();
+      String SQL;
+      SQL = "SELECT username FROM student where username=" + username + "";
+      ResultSet resultSet = statement.executeQuery(SQL);
+      if (resultSet.next())
+        student = 1;
+      else
+        student = 0;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    if (teacher == 0 && student == 0)
+      return 0;
+    else if (teacher == 0 && student == 1)
+      return 1;
+    else if (teacher == 1 && student == 0)
+      return 2;
+    else
+      return 3;
+
+  }
+
+
 }
