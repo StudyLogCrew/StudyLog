@@ -1,15 +1,21 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class Timetable {
     Boolean[][] elefthereia = new Boolean[5][8]; //skeftika to programma ousiastika na einai kathe 1 ora, tha ginetai prota elegxos elefherias
-    Boolean[][] atomiko = new Boolean[5][8]; //atomiko=1
+    Integer[][] diathesimo = new Integer[5][8]; //posothtaAtomiko=1, posothtaOmadiko>1
     String[][] mathimat = new String[5][8]; //prota tha ginei o elegxos me ton pano pinaka je ystera
+    Integer[][] kostos = new Integer[5][8];
     public Timetable(){
         for(int i=0;i<5;i++){
             for(int j=0;j<8;j++){
-                elefthereia[i][j] = true;
+                elefthereia[i][j] = false;
             }
         }
     }
-    public TimetableFrame() {               //frames arketa kala gia afto pou theloume apo chatgpt
+/*     public void TimetableFrame() {               //frames arketa kala gia afto pou theloume apo chatgpt
         setTitle("Timetable");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -61,5 +67,6 @@ public class Timetable {
         add(mainPanel);
 
         setLocationRelativeTo(null); // Center the frame on the screen
-    }
+    } 
+     */
 }
