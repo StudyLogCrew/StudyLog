@@ -1,42 +1,56 @@
+import java.util.Scanner;  // Import the Scanner class
+
 public class PreLoginMenu {
     public static boolean functionable(){    
 
       int epilogh = 1; // tha exei tin epilogh 1 2 h 3
-      MyFrame ArxikiOthoni = new MyFrame(); //Eisagogi arxikis epiloghs
+      //MyFrame ArxikiOthoni = new MyFrame(); //Eisagogi arxikis epiloghs
+      Scanner scan = new Scanner(System.in);  // Create a Scanner object
+      System.out.println("Enter epilogh: 1=Register 2=Login 3=Termatismos");
       if(epilogh==1){    //RegisterScreen
-        RegistrationForm dilosoula = new RegistrationForm();
-        MyFrame RegisterScreen = new MyFrame(); // Edo ypothetoume eisagontai ta stoixeia kai tha eisagontai sto registration form
+        String onoma;
+        String epitheto;
+        String password;
+        String email;
+        String Username;
+        String paketo;
+        System.out.println("Dose onoma: ");
+        onoma=scan.nextLine();
+        System.out.println("Dose epitheto: ");
+        epitheto=scan.nextLine();
+        System.out.println("Dose password: ");
+        password=scan.nextLine();
+        System.out.println("Dose email: ");
+        email=scan.nextLine();
+        System.out.println("Dose Username: ");
+        Username=scan.nextLine();
+
         //kodikas sygkrisis diplon stoixeion
-        if (dilosoula.ID==0||dilosoula.age==0||dilosoula.epitheto==null||dilosoula.onoma==null||dilosoula.passward==null){
-          MyFrame minimaLathous = new MyFrame(); // ta frames tha ta prosarmosoume pio meta me ta katallila orismata
+        if (onoma.isEmpty()||epitheto.isEmpty()||email.isEmpty()||Username.isEmpty()||password.isEmpty()){
+          System.out.println("Symplhrose ta stoixeia pou upoliponte --> Epistrofh sthn arxikh");
+          return true;
+        }
+        else if(SearchProffesor.CheckDouble(Username,password)){
+          System.out.println("Yparxei idi acount --> Epistrofh sthn arxikh");
           return true;
         }
         else{
-          boolean kathigitis=false;
-          int packkage=0;
-          MyFrame paketa = new MyFrame(); //eisagogi apo ton xrhsth gia paketo
-          if(kathigitis){
-            Teacher kath = new Teacher(dilosoula); //tha pasaroume ston constructor tou user to registration form
-            Teacher.setkathgoria(packkage);
-          }
-          else{
-            Student math = new Student(dilosoula);
-            Student.setkathgoria(packkage);
-          }
-            //synexizoume me tin ekxorisi tou user stin db
-            //teacher = null;
-            //student = null;
-          //40 edo prepei na eisagoume ton xristouli stin sql
+          System.out.println("Epelexe paketo: 1)silver 2)holden 3:no_packet ");
+          paketo=scan.nextLine();                   //EDO MPOREI NA PREPEI NA GINEI INT
         }
+
+        RegistrationForm dilosoula= new RegistrationForm(onoma, epitheto, password, email, paketo, Username);
+
+        dilosoula.CreateAcc();
+        MenuEpilogis.MenuEpilogisUser(epilogh);
       }
       if(epilogh==2){     //LoginScreen
-        MyFrame LoginScreen = new MyFrame(); // Edo ypothetoume eisagontai ta stoixeia gia to login
-        String pass;
-        String name;
-        //40 edo tha ginei to search me ti vash kai theloume na epistrafei to  "teacher" i "student" kai id, an den ginetai prostheto ena bool sto user 
-        int id=0;
-        MenuEpilogis.MenuEpilogissStudent(id); //mporoume na valoume parametro user, peite gnomh
-        MenuEpilogis.MenuEpilogisTeacher(id);
+        System.out.println("Dose kodiko: ");
+        String pass = scan.nextLine();
+        System.out.println("Dose Username: ");
+        String name = scan.nextLine();
+        SearchProffesor.SearchUser(name, pass);
+        User xristis = new User(SearchProffesor.xristis[1],SearchProffesor.xristis[3],SearchProffesor.xristis[5],SearchProffesor.xristis[2],SearchProffesor.xristis[4],SearchProffesor.xristis[0]);
         return false;    //otan o xristis teleiosei apo to login tote i efarmogi tha termatizei
       }
       if(epilogh==3){
