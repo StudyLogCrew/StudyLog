@@ -93,7 +93,36 @@ CREATE TABLE quiz (
     category enum('History','Science','General'),
 	PRIMARY KEY(question_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
- 
+
+CREATE TABLE timetable (
+  username VARCHAR(45) NOT NULL,
+  day VARCHAR(10) NOT NULL,
+  hour INT NOT NULL,
+  subject_name VARCHAR(50),
+  cost DECIMAL(10,2),
+  number_of_students INT DEFAULT 0,
+  PRIMARY KEY (username, day, hour),
+  CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES professor (username) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE prof_groups (
+  username VARCHAR(45) NOT NULL,
+  group_id INT NOT NULL,
+  subject_name VARCHAR(50),
+  INDEX idx_group_id (group_id),
+  PRIMARY KEY (username, group_id),
+  CONSTRAINT prof_username FOREIGN KEY (username) REFERENCES professor (username) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE student_group (
+  username VARCHAR(45) NOT NULL,
+  group_id INT NOT NULL,
+  PRIMARY KEY (username, group_id),
+  CONSTRAINT pr_fk_username FOREIGN KEY (username) REFERENCES student (username) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_idgroup FOREIGN KEY (group_id) REFERENCES prof_groups (group_id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 -- INSERT INTO USER --
 --
 INSERT INTO user (username, first_name, last_name, email, packet, passwordd) VALUES
@@ -387,7 +416,7 @@ INSERT INTO evaluations ( username, eval) VALUES
 ('JosephAnderson', 'Average'),
 ('EmmaTaylor', 'Good'),
 ('JamesJohnson', 'Excellent'),
-('MiaBrown', 'Average',),
+('MiaBrown', 'Average'),
 ('BenjaminSmith', 'Good'),
 ('AvaDoe', 'Excellent'),
 ('PedroMartins', 'Average'),
