@@ -1,4 +1,7 @@
 public class MenuEpilogis {
+    public static void MenuEpilogisUser(int id){
+        
+    }
     public static void MenuEpilogisTeacher(int id){
         MyFrame syndedemenos = new MyFrame();
         Teacher kath = new Teacher(null);

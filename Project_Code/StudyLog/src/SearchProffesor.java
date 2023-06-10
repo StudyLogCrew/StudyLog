@@ -1,12 +1,11 @@
 import java.sql.*;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.*;
 
 public class SearchProffesor {
  static String name[];
  static String lesson_name[][];
+ static String xristis[];
+ static String diplo;
  
   public static void SearchName()
  {
@@ -38,9 +37,11 @@ public class SearchProffesor {
             if(i==2) name[1]=columnValue;
             if(i==3) name[2]=columnValue;
             }
-}
+          }
         
-     } catch (Exception e) {
+    }
+        
+    catch (Exception e) {
          e.printStackTrace();
      }
  }
@@ -114,6 +115,51 @@ public class SearchProffesor {
             tempo--;
     }}
   }
-   
-
+  public static Boolean CheckDouble(String Username, String password){
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris","123");
+        Statement statement=connection.createStatement();
+        String SQL;
+        SQL="select username from user where username="+Username+" and password="+password+"" ;    
+        ResultSet resultSet=statement.executeQuery(SQL);
+        ResultSetMetaData rsmd = resultSet.getMetaData();
+        int columnsNumber = rsmd.getColumnCount();
+        if(resultSet.equals(0)){
+          return true;
+        }
+        else 
+          return false;
+      }
+        catch (Exception e) {
+         e.printStackTrace();
+    }
+    return false;
+  }
+  public static void SearchUser(String Username,String password){
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris","123");
+        Statement statement=connection.createStatement();
+        String SQL;
+        SQL="select first_name,last_name,email,paket,password,username from user where username="+Username+" and password="+password+"" ;    
+        ResultSet resultSet=statement.executeQuery(SQL);
+        ResultSetMetaData rsmd = resultSet.getMetaData();
+        int columnsNumber = rsmd.getColumnCount();
+        while (resultSet.next()) {
+          for (int i = 1; i <= columnsNumber; i++) {
+            String columnValue = resultSet.getString(i);
+            if(i==1) xristis[0]=columnValue;
+            if(i==2) xristis[1]=columnValue;
+            if(i==3) xristis[2]=columnValue;
+            if(i==4) xristis[3]=columnValue;
+            if(i==5) xristis[4]=columnValue;
+            if(i==6) xristis[5]=columnValue;
+            }
+        }    
+      }
+        catch (Exception e) {
+         e.printStackTrace();
+    }
+  }
 }
