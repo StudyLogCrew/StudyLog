@@ -23,7 +23,7 @@ public class Evaluation {
            String review=scan.nextLine();
            scan.close();
            Class.forName("com.mysql.cj.jdbc.Driver");
-           Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris","123");
+           Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "root","Sn1701sn1701!");
            Statement statement=connection.createStatement();
            String SQL="INSERT INTO evaluations ( username, eval) VALUES ("+this.username+","+review+") ";
            int rowsAffected=statement.executeUpdate(SQL);

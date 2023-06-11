@@ -8,7 +8,7 @@ public class User {
     int maxLessons;
     int priority;
     int quiz;
-    public User(String first_name,String last_name,String password,String email,String packet,String user){
+    public User(String first_name,String last_name,String password,String packet,String email,String user){
         this.onoma=first_name;
         this.epitheto=last_name;
         this.password=password;        
