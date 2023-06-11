@@ -1,49 +1,78 @@
+import java.util.Scanner;
+
 public class MenuEpilogis {
-    public static void MenuEpilogisUser(int id){
+    public static Boolean MenuEpilogisUser(User xristis){
+        int apofash=0;
+        while(apofash!=3){
+            System.out.println("Tha itheles na dimiourgiseis kainourgio profile?: 1=YES\n 2=NO (Synexeia Sto programma)\n 3=Exodos \n");
+            Scanner scan = new Scanner(System.in);
+            apofash=Integer.valueOf(scan.nextInt());
+            if(apofash==1){
+                apofash=0;
+                CreateProfile.createProfill(xristis);
+            }
+            else if(apofash==2){
+                System.out.println("thes na synexiseis san kathigitis i san mathitis?: 1=kathigitis 2=mathitis \n");
+                apofash=scan.nextInt();
+                if(apofash==1){
+                    MenuEpilogisTeacher(xristis);
+                }
+                else if(apofash==2){
+                    MenuEpilogissStudent(xristis);
+                }
+                else{
+                    System.out.println("Lanthasmenh eisodos!");
+                }
+            }
+            else{
+                System.out.println("Lanthasmenh eisodos!");
+            }
+            scan.close();
+        }
+        return false;
+    }
+    public static Boolean MenuEpilogisTeacher(User xristis){
+        Teacher.Teacherretrieve(xristis.epitheto,xristis.onoma);
+        Teacher kath = new Teacher(xristis.onoma,xristis.epitheto,xristis.password,xristis.email,xristis.packet,xristis.Username,Teacher.kathigiti[5],Integer.valueOf(Teacher.kathigiti[7]),Integer.valueOf(Teacher.kathigiti[4]));
+        int apofash=0;
+        System.out.println("Epelexe: 1)Xanadimiourgise Profile 2)Vlepo MyStudents ");
+        int epilogh=0;
+        while(epilogh!=0){
+            if(epilogh==1){     //create profile
+                CreateProfile.createProfill(xristis);
+            }
+            if(epilogh==2){     //vlepei Mystudents
+                
+            }   
+        }
+        return false;
+    }
+    public static void MenuEpilogissStudent(User xristis){
+       // MyFrame syndedemenos = new  MyFrame(); //eite pernoume stoixeia apo db,
+        Student.Studentretrieve(xristis.epitheto,xristis.onoma);
+
+        int age=Integer.parseInt(Student.mathitiss[4]);
+        Student math = new Student(xristis.onoma,xristis.epitheto,xristis.password,xristis.email,xristis.packet,xristis.Username,age);                      //genika afto einai ena thema, pos tha ginetai pass apo synarthsh se synarthsh o xristis? tha dimiourgoume kathe fora kainourgio object xrisits?
+        int epilogh=0;
+        System.out.println("1): Anazhthsh kathigiti\n 2)Epilogh random quiz");
+        Scanner diavase = new Scanner(System.in);
+        epilogh=diavase.nextInt();
+        diavase.nextLine();
         
-    }
-    public static void MenuEpilogisTeacher(int id){
-        MyFrame syndedemenos = new MyFrame();
-        Teacher kath = new Teacher(null);
-        if(kath!.prof){       //skeftika na einai ypoxreotiko na kaneis create profile prin synexiseis
-            CreateProfile.createProfill(id, 0);
-        }
-        int epilogh=0;
-        if(epilogh==0){     //create profile
-            CreateProfile.createProfill(id, 0);
-        }
-        else if(epilogh==1){    
+        while(epilogh!=4){
+            if(epilogh==1){    //anazhthsh kathigiti
+                SearchProffesor.SearchLesson();
+            }
+            else if(epilogh==2){    //random quiz
+                Quiz.getQuiz();
+                Quiz.StartQuiz(math);
+            }
+            else if(epilogh==3){ // add friend
             
-        }
-        else if(epilogh==2){    
+            }
+            else if(epilogh==4){ //friends interaction
 
-        }
-        else if(epilogh==3){
-            
-        }
-    }
-    }
-    public static void MenuEpilogissStudent(int id){
-        MyFrame syndedemenos = new  MyFrame(); //eite pernoume stoixeia apo db,
-        Student math = new Student();                      //genika afto einai ena thema, pos tha ginetai pass apo synarthsh se synarthsh o xristis? tha dimiourgoume kathe fora kainourgio object xrisits?
-        if(!math.prof){       //skeftika na einai ypoxreotiko na kaneis create profile prin synexiseis
-            CreateProfile.createProfill(id, 0);
-        }
-        int epilogh=0;
-        if(epilogh==0){     //create profile
-            CreateProfile.createProfill(id, 0);
-        }
-        else if(epilogh==1){    //anazhthsh kathigiti
-            SearchProffesor.menuu(id);
-        }
-        else if(epilogh==2){    //random quiz
-                Quiz.mennu(null, null);
-        }
-        else if(epilogh==3){ // add friend
-            //voitheia se afto kai sto apokato
-        }
-        else if(epilogh==4){ //friends interaction
-
+            }   
         }
     }
 }

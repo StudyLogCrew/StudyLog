@@ -2,9 +2,9 @@ import java.sql.*;
 import java.util.*;
 
 public class SearchProffesor {
- static String name[];
- static String lesson_name[][];
- static String xristis[];
+ static String name[] = new String[2];
+ static String lesson_name[][] = new String[10][2];
+ static String xristis[]= new String[6];
  static String diplo;
  
   public static void SearchName()
@@ -17,13 +17,13 @@ public class SearchProffesor {
     scan.close();
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris","123");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "root","Sn1701sn1701!");
         Statement statement=connection.createStatement();
         String SQL;
         if(first_name.isEmpty()){
-        SQL="select first_name,last_name,email from professor where last_name="+last_name+"" ;}
+        SQL="select first_name,last_name,email from professor where last_name='"+last_name+"'" ;}
         else{
-        SQL="select first_name,last_name,email from professor where last_name="+last_name+" and first_name="+first_name+"" ;    
+        SQL="select first_name,last_name,email from professor where last_name='"+last_name+" and first_name="+first_name+"'" ;    
         }
         ResultSet resultSet=statement.executeQuery(SQL);
         ResultSetMetaData rsmd = resultSet.getMetaData();
@@ -54,10 +54,10 @@ public class SearchProffesor {
     scan.close();
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris","123");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "root","Sn1701sn1701!");
         Statement statement=connection.createStatement();
         String SQL;
-        SQL="SELECT professor.first_name, professor.last_name, professor.packet,proffesor.votes FROM professor INNER JOIN profs_subjects ON profs_subjects.username = professor.username WHERE profs_subjects.subject_name =" +lesson+"";
+        SQL="SELECT professor.first_name, professor.last_name, professor.packet,proffesor.votes FROM professor INNER JOIN profs_subjects ON profs_subjects.username = professor.username WHERE profs_subjects.subject_name ='" +lesson+"'";
         ResultSet resultSet=statement.executeQuery(SQL);
         ResultSetMetaData rsmd = resultSet.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
@@ -118,10 +118,10 @@ public class SearchProffesor {
   public static Boolean CheckDouble(String Username, String password){
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris","123");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "root","Sn1701sn1701!");
         Statement statement=connection.createStatement();
         String SQL;
-        SQL="select username from user where username="+Username+" and password="+password+"" ;    
+        SQL="select username from user where username='"+Username+"' and passwordd='"+password+"'" ;    
         ResultSet resultSet=statement.executeQuery(SQL);
         ResultSetMetaData rsmd = resultSet.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
@@ -139,10 +139,10 @@ public class SearchProffesor {
   public static void SearchUser(String Username,String password){
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris","123");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "root","Sn1701sn1701!");
         Statement statement=connection.createStatement();
         String SQL;
-        SQL="select first_name,last_name,email,paket,password,username from user where username="+Username+" and password="+password+"" ;    
+        SQL="select first_name,last_name,email,packet,passwordd,username from user where username='"+Username+"' and passwordd='"+password+"'" ;    
         ResultSet resultSet=statement.executeQuery(SQL);
         ResultSetMetaData rsmd = resultSet.getMetaData();
         int columnsNumber = rsmd.getColumnCount();
@@ -168,10 +168,10 @@ public class SearchProffesor {
     int student = 0;
     try {
       Class.forName("com.mysql.cj.jdbc.Driver");
-      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris", "123");
+      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "root", "Sn1701sn1701!");
       Statement statement = connection.createStatement();
       String SQL;
-      SQL = "SELECT username FROM professor where username=" + username + "";
+      SQL = "SELECT username FROM professor where username='" + username + "'";
       ResultSet resultSet = statement.executeQuery(SQL);
       if (resultSet.next())
         teacher = 1;
@@ -182,10 +182,10 @@ public class SearchProffesor {
     }
     try {
       Class.forName("com.mysql.cj.jdbc.Driver");
-      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris", "123");
+      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "root", "Sn1701sn1701!");
       Statement statement = connection.createStatement();
       String SQL;
-      SQL = "SELECT username FROM student where username=" + username + "";
+      SQL = "SELECT username FROM student where username='" + username + "'";
       ResultSet resultSet = statement.executeQuery(SQL);
       if (resultSet.next())
         student = 1;

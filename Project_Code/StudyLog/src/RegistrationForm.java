@@ -22,7 +22,7 @@ public class RegistrationForm {
     {
        try {
            Class.forName("com.mysql.cj.jdbc.Driver");
-           Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "lefteris","123");
+           Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/StudyLog", "root","Sn1701sn1701!");
            Statement statement=connection.createStatement();
            String SQL="INSERT INTO user (username, first_name, last_name, email, packet, passwordd) VALUES("+this.Username+","+this.onoma+","+this.epitheto+","+this.email+","+this.packet+","+this.password+")";
            int rowsAffected=statement.executeUpdate(SQL);
